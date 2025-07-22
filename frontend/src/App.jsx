@@ -5,20 +5,16 @@ import CampusHero from "./components/CampusHero";
 
 import Hero from "./components/Hero";
 import PlatformHighlights from "./components/PlatformHighlights";
-//import Carousel from "./components/Carousel";
-//import Footer from "./components/Footer";
+import FeaturedCampuses from "./components/FeaturedCampuses";
+
 
 export default function App() {
   return (
     <div className="bg-gradient-to-b from-gray-800 to-gray-900 min-h-screen min-w-screen text-white font-sans">
       <Navbar />
       <CampusHero />
-    {/* <FeaturesSections /> */}
-    <PlatformHighlights/>
-      {/* <Hero /> */}
-      
-      {/* <Carousel />
-      <Footer /> */}
+      <PlatformHighlights/>
+      <FeaturedCampuses/>
     </div>
   );
 }
