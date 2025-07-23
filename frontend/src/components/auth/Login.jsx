@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import NET from 'vanta/dist/vanta.net.min';
 import * as THREE from 'three';
+import { Link } from 'react-router-dom';
+
 
 const Login = () => {
   const vantaRef = useRef(null);
@@ -54,14 +56,15 @@ const Login = () => {
       <div className="flex w-3/4 h-3/4">
 
         {/* Left Panel: Animated Brand */}
-        <div className="flex-1 flex flex-col items-center justify-center animate-float">
-          <h1 className="text-9xl font-glitch font-bold text-purple-600 text-center leading-none animate-glow">
-            CDAC
-          </h1>
-          <h2 className="text-7xl font-sans font-bold text-purple-600 text-center mt-4">
-            CONNECT
-          </h2>
-        </div>
+      <Link to="/" className="flex-1 flex flex-col items-center justify-center animate-float">
+  <h1 className="text-9xl font-glitch font-bold text-purple-600 text-center leading-none animate-glow">
+    CDAC
+  </h1>
+  <h2 className="text-7xl font-sans font-bold text-purple-600 text-center mt-4">
+    CONNECT
+  </h2>
+</Link>
+
 
         {/* Right Panel: "Shattered Glass" Signup Form */}
         <div className="w-1/2 h-full p-10 flex flex-col justify-center"
