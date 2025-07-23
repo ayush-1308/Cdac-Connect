@@ -49,7 +49,12 @@ const CampusHero = () => {
         {/* Call-to-Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-5 sm:space-y-0 sm:space-x-6 mt-12">
           <button className="flex items-center justify-center space-x-3 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold py-4 px-8 rounded-lg transition duration-300 ease-in-out text-lg">
-            <span>Sign Up</span>
+            <button
+            onClick={() => (window.location.href = '/login')}
+            className='font-semibold text-white '
+          >
+            Let's Connect
+          </button>
             <ArrowIcon />
           </button>
           <button className="flex items-center justify-center space-x-3 border-2 border-gray-700 hover:bg-gray-800 text-white font-semibold py-4 px-8 rounded-lg transition duration-300 ease-in-out text-lg">
