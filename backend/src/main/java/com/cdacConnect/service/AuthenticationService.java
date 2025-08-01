@@ -71,7 +71,7 @@ public class AuthenticationService {
 
         ResponseCookie responseCookie = ResponseCookie.from("JWT", "")
                 .httpOnly(true)
-                .secure(true)AuthenticationService
+                .secure(true)
                 .path("/")
                 .maxAge(0)
                 .sameSite("Strict")
