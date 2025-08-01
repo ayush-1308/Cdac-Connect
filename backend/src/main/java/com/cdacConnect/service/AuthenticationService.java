@@ -48,7 +48,7 @@ public class AuthenticationService {
         user.setPassword(passwordEncoder.encode((registerRequestDTO.getPassword())));
         user.setEmail(registerRequestDTO.getEmail());
 
-        User savedUser = userRepository.save(user);
+        userRepository.save(user);
         return convertToUserDTO(user);
     }
 
