@@ -24,11 +24,9 @@ const SignUp = () => {
         gyroControls: false,
         minHeight: 200.00,
         minWidth: 200.00,
-        // scale: 1.00,
-        // scaleMobile: 1.00,
         color: 0xba24ff,          // A vibrant purple
         backgroundColor: 0x181824,  // Dark background from prompt
-        // points: 9.00,
+       
         maxDistance: 2.00,
         spacing: 18.00,
         speed: 0.8 // A slower, more mesmerizing speed
