@@ -86,4 +86,25 @@ export const authService = {
             throw new errorMessage;
         }
     },
+
+    signup: async(username, email, password) => {
+        try{
+
+            const response = await api.post('/auth/signup', {
+                username,
+                email,
+                password
+            });
+
+            return{
+                success: true,
+                user: response.data
+            };
+        }
+        catch (error){
+            console.error('Signup failed', error);
+            const errorMessage = error.response?.data?.message || 'Signup failed, Please check your credentials';
+            throw new errorMessage;
+        }
+    },
 }
