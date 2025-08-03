@@ -56,7 +56,7 @@ const generateUserColor = () => {
 export const authService = {
 
     login: async (username, password) => {
-        try{
+        try {
 
             const response = await api.post('/auth/login', {
                 username,
@@ -74,21 +74,21 @@ export const authService = {
             localStorage.setItem('currentUser', JSON.stringify(userData));
             localStorage.setItem('user', JSON.stringify(response.data));
 
-            return{
+            return {
                 success: true,
                 user: userData
             };
 
         }
-        catch(error){
+        catch (error) {
             console.error('Login failed', error);
             const errorMessage = error.response?.data?.message || 'Login failed, Please check your credentials';
             throw new errorMessage;
         }
     },
 
-    signup: async(username, email, password) => {
-        try{
+    signup: async (username, email, password) => {
+        try {
 
             const response = await api.post('/auth/signup', {
                 username,
@@ -96,15 +96,45 @@ export const authService = {
                 password
             });
 
-            return{
+            return {
                 success: true,
                 user: response.data
             };
         }
-        catch (error){
+        catch (error) {
             console.error('Signup failed', error);
             const errorMessage = error.response?.data?.message || 'Signup failed, Please check your credentials';
             throw new errorMessage;
+        }
+    },
+    logout: async () => {
+        try {
+            await api.post('/auth/logout');
+        }
+        catch (error) {
+            console.error('Logout failed', error);
+        }
+        finally {
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('user');
+        }
+    },
+
+    fetchCurrentUser: async () => {
+        try {
+            const response = await api.get('/auth/getcurrentuser');
+
+            localStorage.setItem('user', JSON.stringify(response.data));
+            return response.data;
+        }
+        catch (error) {
+            console.error('Error fetching user data', error);
+
+            //if unauthorized, needs to logout
+            if (error.response && error.response.status === 401) {
+                await authService.logout();
+            }
+
         }
     },
 }
