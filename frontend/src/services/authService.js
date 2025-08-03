@@ -172,4 +172,31 @@ export const authService = {
             return null;
         }
     },
+
+    isAuthenticated: () => {
+        const user = localStorage.getItem('úser') || localStorage.getItem('currentUser');
+        return !!user;
+    },
+
+    fetchPrivateMessages: async(user1, user2) => {
+        try{
+
+            const response = await api.get(`/api/messages/private?user1=${encodeURIComponent(user1)}&user2=${encodeURIComponent(user2)}`);
+            return response.data;
+        }
+        catch(error){
+            console.error('Error in fetching private messages', error);
+            throw error;
+        }
+    },
+
+    getOnlineUsers: async () => {
+        try {
+            const response = await api.get('/auth/getonlineusers');
+            return response.data;
+        } catch (error) {
+            console.error('Fetch online users error:', error);
+            throw error;
+        }
+    }
 }
