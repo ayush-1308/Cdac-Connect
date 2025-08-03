@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import NET from 'vanta/dist/vanta.net.min';
 import * as THREE from 'three';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { authService } from '../../services/authService';
 
 
 const SignUp = () => {
@@ -9,9 +10,35 @@ const SignUp = () => {
   const [vantaEffect, setVantaEffect] = useState(null);
 
   // State for form fields
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+   const[username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
+
+  const handleSignup = async (e) => {
+        e.preventDefault();
+        setMessage('');
+        setIsLoading(true);
+
+        try{
+            const result = await authService.signup(username, email, password);
+            if(result.success){
+                setMessage('Account created successfully! Please login');
+                setTimeout(() => {
+                    navigate('/login');
+                }, 2000);
+            }
+        }
+        catch (error) {
+                setMessage(error.message || 'Signup failed, please try again.');
+                console.error('Signup failed', error);
+        }
+        finally {
+            setIsLoading(false);
+        }
+    }
 
   // Initialize Vanta.js background
   useEffect(() => {
@@ -24,9 +51,11 @@ const SignUp = () => {
         gyroControls: false,
         minHeight: 200.00,
         minWidth: 200.00,
+        // scale: 1.00,
+        // scaleMobile: 1.00,
         color: 0xba24ff,          // A vibrant purple
         backgroundColor: 0x181824,  // Dark background from prompt
-       
+        // points: 9.00,
         maxDistance: 2.00,
         spacing: 18.00,
         speed: 0.8 // A slower, more mesmerizing speed
@@ -38,20 +67,7 @@ const SignUp = () => {
     };
   }, [vantaEffect]);
 
-  // Dummy useEffect to simulate API call
-  useEffect(() => {
-    const fetchDummyData = () => {
-      setTimeout(() => {
-        setUsername('cyb3r_n3xus');
-        setPassword('c0nn3ct_th3_d0ts!');
-        setEmail('user@cdac.connect');
-      }, 1500);
-    };
-    fetchDummyData();
-  }, []);
-
   return (
-    // Fixed 1920x1080 container to prevent overflow
     <div ref={vantaRef} className="relative min-h-screen overflow-hidden flex items-center justify-center">
       <div className="flex w-3/4 h-3/4">
 
@@ -79,7 +95,7 @@ const SignUp = () => {
           </h2>
           <p className="text-center text-gray-400 mb-8">Create your digital presence.</p>
 
-          <form className="space-y-5">
+          <form onSubmit={handleSignup} className="space-y-5">
             <input
               type="text"
               placeholder="username"
@@ -103,9 +119,10 @@ const SignUp = () => {
             />
             <button
               type="submit"
+              isLoading={true}
               className="w-full p-4 mt-4 font-bold text-lg text-white border-2 border-purple-500 rounded-md hover:bg-purple-500 transition-all duration-300 transform hover:scale-105"
             >
-              SignUp
+               {isLoading ? 'Creating Account...' : 'Signup'}
             </button>
           </form>
           <p className="mt-8 text-center text-sm text-gray-300">
