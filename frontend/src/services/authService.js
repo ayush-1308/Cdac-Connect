@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_BACKEND_API_URL || 'http://localhost:8080';
+const API_URL = import.meta.env.VITE_BACKEND_API_URL;
 console.log('API URL:', API_URL);
 
 // Create axios instance
