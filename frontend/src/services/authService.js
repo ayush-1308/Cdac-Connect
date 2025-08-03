@@ -137,4 +137,39 @@ export const authService = {
 
         }
     },
+    fetchOnlineUsers: async () => {
+        try {
+            const response = await api.get('/auth/getonlineusers');
+            return response.data;
+        } catch (error) {
+            console.error('Fetch online users error:', error);
+            throw error;
+        }
+    },
+
+    getCurrentUser: () => {
+
+        const currentUserStr = localStorage.getItem('currentUser');
+        const userStr = localStorage.getItem('user');
+
+        try{
+            if(currentUserStr){
+                return JSON.parse(currentUserStr);
+            }
+            else if(userStr){
+                const userData = JSON.parse(userStr);
+                const userColor = generateUserColor();
+
+                return{
+                    ...userData,
+                    color: userColor
+                };
+            }
+            return null
+        }
+        catch (error){
+            console.error('Error parsing user data', error);
+            return null;
+        }
+    },
 }
