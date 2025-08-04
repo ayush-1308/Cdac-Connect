@@ -43,7 +43,7 @@ const CampusHero = () => {
         
         {/* Subheading */}
         <p className="text-2xl text-gray-400 mt-8 max-w-5xl">
-          Join CampusConnect, the ultimate platform for students to network, share resources, and thrive together. Your academic journey, simplified and supercharged.
+          Join CdacConnect, the ultimate platform for students to network, share resources, and thrive together. Your academic journey, simplified and supercharged.
         </p>
         
         {/* Call-to-Action Buttons */}
