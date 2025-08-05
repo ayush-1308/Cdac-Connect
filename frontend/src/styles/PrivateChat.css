@@ -268,7 +268,7 @@
     box-shadow: none;
 }
 
-/* Responsive design for smaller screens */
+
 @media (max-width: 480px) {
     .private-chat-window {
         right: 10px;
