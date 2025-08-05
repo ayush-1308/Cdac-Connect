@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Navbar ({ onContactClick }) {
+export default function Navbar ({ onContactClick, onAboutClick }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -12,7 +12,7 @@ export default function Navbar ({ onContactClick }) {
         {/* Desktop Links */}
         <div className='hidden md:flex items-center gap-10'>
           <ul className='flex gap-8 text-sm font-semibold'>
-            <li className='hover:text-purple-400 cursor-pointer'>About</li>
+            <li className='hover:text-purple-400 cursor-pointer' onClick={onAboutClick}>About</li>
             <li
               className='hover:text-purple-400 cursor-pointer'
               onClick={onContactClick}
