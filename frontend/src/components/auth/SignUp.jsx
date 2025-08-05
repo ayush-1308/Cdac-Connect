@@ -104,7 +104,7 @@ const SignUp = () => {
             />
             <input
               type="password"
-              placeholder="passoword"
+              placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full p-4 bg-transparent border border-gray-500 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-white transition-colors"
