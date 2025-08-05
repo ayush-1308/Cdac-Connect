@@ -4,7 +4,6 @@ import * as THREE from 'three';
 import { Link, useNavigate } from 'react-router-dom';
 import { authService } from '../../services/authService';
 
-
 const SignUp = () => {
   const vantaRef = useRef(null);
   const [vantaEffect, setVantaEffect] = useState(null);
