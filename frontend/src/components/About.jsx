@@ -29,7 +29,7 @@ const teamMembers = [
   {
     name: 'Ronak Kudal',
     username: 'Ronakkudal',
-    quote: 'After the age of 30 there is no more ugly or handsome men.',
+    quote: 'Code is the tool that turns imagination into innovation.',
     img: 'ronak.jpg',
   },
  
