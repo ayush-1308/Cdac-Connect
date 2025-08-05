@@ -88,8 +88,6 @@ public class AuthController {
         UserDTO userDTO = new UserDTO();
         userDTO.setEmail(user.getEmail());
         userDTO.setUsername(user.getUsername());
-        userDTO.setEmail(user.getEmail());
-
         return userDTO;
     }
 }
