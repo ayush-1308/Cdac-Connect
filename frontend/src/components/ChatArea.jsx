@@ -66,7 +66,7 @@ const ChatArea = () => {
         // Create STOMP client using the new API
         const client = new Client({
             // Use factory function for SockJS
-            webSocketFactory: () => new SockJS('http://localhost:8080/ws'), 
+            webSocketFactory: () => new SockJS(`${import.meta.env.VITE_BACKEND_API_URL}/ws`), 
             
             connectHeaders: {
                 'client-id': username,
