@@ -78,12 +78,12 @@ export default function Navbar ({ onContactClick, onAboutClick }) {
           >
             Contact
           </button>
-          <a
-            href='https://dummyapi.io/signup'
+          <button
+            onClick={() => (window.location.href = '/login')}
             className='inline-block bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md'
           >
-            SignUp
-          </a>
+            Let's Connect
+          </button>
         </div>
       )}
     </nav>
