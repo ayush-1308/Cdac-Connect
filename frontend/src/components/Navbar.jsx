@@ -63,10 +63,10 @@ export default function Navbar ({ onContactClick, onAboutClick }) {
       {/* Mobile Menu */}
       {isOpen && (
         <div className='md:hidden w-full px-6 pb-4 space-y-3 text-sm font-semibold text-center'>
-          <a href='#' className='block hover:text-purple-400'>
+          <a href='/' className='block hover:text-purple-400'>
             Home
           </a>
-          <a href='#' className='block hover:text-purple-400'>
+          <a href='/about' className='block hover:text-purple-400'>
             About
           </a>
           <button
