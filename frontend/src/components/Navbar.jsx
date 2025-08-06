@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Navbar ({ onContactClick }) {
+export default function Navbar ({ onContactClick, onAboutClick }) {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -12,7 +12,7 @@ export default function Navbar ({ onContactClick }) {
         {/* Desktop Links */}
         <div className='hidden md:flex items-center gap-10'>
           <ul className='flex gap-8 text-sm font-semibold'>
-            <li className='hover:text-purple-400 cursor-pointer'>About</li>
+            <li className='hover:text-purple-400 cursor-pointer' onClick={onAboutClick}>About</li>
             <li
               className='hover:text-purple-400 cursor-pointer'
               onClick={onContactClick}
@@ -78,12 +78,12 @@ export default function Navbar ({ onContactClick }) {
           >
             Contact
           </button>
-          <a
-            href='https://dummyapi.io/signup'
+          <button
+            onClick={() => (window.location.href = '/login')}
             className='inline-block bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md'
           >
-            SignUp
-          </a>
+            Let's Connect
+          </button>
         </div>
       )}
     </nav>
