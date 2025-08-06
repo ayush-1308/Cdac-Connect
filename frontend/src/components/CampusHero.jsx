@@ -37,7 +37,7 @@ const CampusHero = () => {
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 text-center">
         
         {/* Main Headline */}
-        <h1 className="text-8xl font-bold max-w-6xl leading-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold max-w-6xl leading-tight">
           Connect, Collaborate, & Succeed on Campus
         </h1>
         
