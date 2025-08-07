@@ -16,6 +16,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     const isValidPassword = (password) => {
@@ -80,6 +81,20 @@ const SignUp = () => {
     };
   }, [vantaEffect]);
 
+  const checkUsername = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/auth/exists?username=${username}`);
+      if (!response.ok) {
+        throw new Error('Failed to check username');
+      }
+      const exists = await response.json(); // assuming server returns true/false
+      return exists;
+    } catch (err) {
+      console.error("Username check failed", err);
+      return false;
+    }
+  };
+
   return (
     <div ref={vantaRef} className="relative min-h-screen overflow-hidden flex items-center justify-center">
       <div className="flex w-3/4 h-3/4">
@@ -114,11 +129,17 @@ const SignUp = () => {
               placeholder="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+
+              onBlur={async () => {
+                const exists = await checkUsername();
+                if (exists) setError("Username already exists");
+                else setError("");
+              }}
               className="w-full p-4 bg-transparent border border-gray-500 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-white transition-colors"
             />
             <input
               type="password"
-              placeholder="passoword"
+              placeholder="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full p-4 bg-transparent border border-gray-500 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-white transition-colors"
@@ -147,10 +168,13 @@ const SignUp = () => {
           </button>
           </p>
           {message && (
-  <p className={`text-center mt-4 text-sm ${isSuccess ? 'text-green-400' : 'text-red-400'}`}>
-    {message}
-  </p>
-)}
+              <p className={`text-center mt-4 text-sm ${isSuccess ? 'text-green-400' : 'text-red-400'}`}>
+                {message}
+              </p>
+          )}
+          {error && (
+              <p className="text-center mt-2 text-red-400 text-sm">{error}</p>
+          )}
 
         </div>
       </div>
