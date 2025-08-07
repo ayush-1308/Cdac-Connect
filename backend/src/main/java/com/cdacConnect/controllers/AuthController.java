@@ -84,6 +84,12 @@ public class AuthController {
         return ResponseEntity.ok(convertToUserDTO(user));
     }
 
+    @GetMapping("/exists")
+    public ResponseEntity<Boolean> existsByUsername(@RequestParam String username) {
+    	boolean exists = userRepository.existsByUsername(username);
+        return ResponseEntity.ok(exists);
+    }
+
     public UserDTO convertToUserDTO(User user){
         UserDTO userDTO = new UserDTO();
         userDTO.setEmail(user.getEmail());
