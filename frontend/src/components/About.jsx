@@ -39,7 +39,14 @@ const About = () => {
   return (
 
     <>
+    
     <div className="bg-[#181824] min-h-screen font-sans">
+       <button
+      onClick={() => (window.location.href = '/')}
+      className="text-white bg-transparent border-none outline-none focus:outline-none hover:underline text-lg items-center"
+      >
+      ← Go Back to Home
+    </button>
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-white">
