@@ -3,9 +3,9 @@ import { FaGithub } from 'react-icons/fa';
 
 const contributors = [
   { name: 'Aman', email: 'nandaaman.99948@gmail.com', githubUser: 'aman-nanda17' },
-  { name: 'Himashu', email: 'himanshurajpoot2233@gmail.com', githubUser: 'himanshuraj62' },
+  { name: 'Himanshu', email: 'himanshurajpoot2233@gmail.com', githubUser: 'himanshuraj62' },
   { name: 'Ayush', email: 'ayushsinghlts123@gmail.com', githubUser: 'ayush-1308' },
-  { name: 'Divyanshu', email: 'divyanshuvanwani@gmail.com', githubUser: 'Divyanshu3103' }, // Assuming a username
+  { name: 'Divyanshu', email: 'divyanshuvanwani@gmail.com', githubUser: 'Divyanshu3103' }, 
   { name: 'Ronak', email: 'ronakkudal00@gmail.com', githubUser: 'Ronakkudal' },
 ];
 
