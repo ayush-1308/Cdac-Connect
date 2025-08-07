@@ -21,7 +21,9 @@ Cdac-Connect is a collaborative platform designed to streamline communication an
     ```bash
     npm run dev
     ```
-4. Add the required properties in application.properties(backend).
+4. Add .env in frontend folder and add an env "VITE_BACKEND_API_URL=http://localhost:<your-backend-port>"    
+
+5. Add the required properties in application.properties(backend).
 
 ## Contributing
 
