@@ -15,6 +15,7 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const isValidPassword = (password) => {
@@ -43,7 +44,7 @@ const SignUp = () => {
         }, 2000);
       }
     } catch (error) {
-      setMessage(error.message || 'Signup failed, please try again.');
+      setMessage( 'Signup failed, please try again.');
       console.error('Signup failed', error);
     } finally {
       setIsLoading(false);
@@ -72,6 +73,20 @@ const SignUp = () => {
       if (vantaEffect) vantaEffect.destroy();
     };
   }, [vantaEffect]);
+
+  const checkUsername = async () => {
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_API_URL}/auth/exists?username=${username}`);
+      if (!response.ok) {
+        throw new Error('Failed to check username');
+      }
+      const exists = await response.json(); // assuming server returns true/false
+      return exists;
+    } catch (err) {
+      console.error("Username check failed", err);
+      return false;
+    }
+  };
 
   return (
     <div ref={vantaRef} className="relative min-h-screen overflow-hidden flex items-center justify-center px-4">
@@ -105,6 +120,13 @@ const SignUp = () => {
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+
+              onBlur={async () => {
+                const exists = await checkUsername();
+                if (exists) setError("Username already exists");
+                else setError("");
+              }}
+
               className="w-full p-4 bg-transparent border border-gray-500 rounded-md text-white placeholder-gray-400 focus:outline-none focus:border-white transition-colors"
             />
             <input
@@ -145,6 +167,12 @@ const SignUp = () => {
               {message}
             </p>
           )}
+
+
+          {error && (
+            <p className="text-center mt-2 text-red-400 text-sm">{error}</p>
+          )}
+
         </div>
       </div>
     </div>
